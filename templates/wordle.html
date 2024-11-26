@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Wordle Game</h1>
+        </header>
+        <main>
+            <p class="message">{{ game_state['message'] }}</p>
+
+            <!-- Display guessed words with feedback -->
+            <div class="guesses">
+                {% for attempt in game_state['attempts'] %}
+                    <div class="guess">
+                        {% for i in range(attempt['word']|length) %}
+                            <span class="letter {{ attempt['feedback'][i] }}">
+                                {{ attempt['word'][i] }}
+                            </span>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if not game_state['game_over'] %}
+                <form method="post" class="word-form">
+                    <label for="word">Enter your word:</label> <!-- Adds an accessible label -->
+                    <input
+                        type="text"
+                        id="word"
+                        name="word"
+                        placeholder="Type a 5-letter word"
+                        maxlength=5
+                        title="Type a 5-letter word"
+                        required
+                    >
+                    <button type="submit">Submit</button>
+                </form>
+
+            {% else %}
+                <a href="/reset" class="reset-btn">Play Again</a>
+            {% endif %}
+
+            <!-- Display the virtual keyboard -->
+            <div class="keyboard">
+                {% for row in ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'] %}
+                    <div class="keyboard-row">
+                        {% for char in row %}
+                            <button class="key {{ game_state['keyboard'][char] or '' }}" disabled>
+                                {{ char.upper() }}
+                            </button>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.message {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Guesses */
+.guesses {
+    margin: 20px 0;
+}
+
+.guess {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.letter {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.green {
+    background-color: #6aaa64;
+    color: white;
+}
+
+.yellow {
+    background-color: #c9b458;
+    color: white;
+}
+
+.gray {
+    background-color: #787c7e;
+    color: white;
+}
+
+/* Keyboard */
+.keyboard {
+    margin-top: 20px;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.key {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #d3d6da;
+    cursor: not-allowed;
+}
+
+.key.green {
+    background-color: #6aaa64;
+    color: white;
+}
+
+.key.yellow {
+    background-color: #c9b458;
+    color: white;
+}
+
+.key.gray {
+    background-color: #787c7e;
+    color: white;
+}
+.word-form input {
+    z-index: 1; /* Ensure it's above other elements */
+    pointer-events: auto; /* Ensure it's interactive */
+}
